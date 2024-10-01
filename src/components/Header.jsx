@@ -1,8 +1,18 @@
 import { NoContext } from "../App";
 import { useContext } from "react";
 import { ConTheme } from "../App";
+import { useEffect } from "react";
 
 export default function Header({  }) {
+
+    
+
+    const context=useContext(NoContext)
+    const themes=useContext(ConTheme)
+
+    const{user}=context
+    const{theme}=themes
+    const{setTheme}=themes
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
@@ -11,13 +21,6 @@ export default function Header({  }) {
         }
       }, []
     );
-
-    const context=useContext(NoContext)
-    const themes=useContext(ConTheme)
-
-    const{user}=context
-    const{theme}=themes
-    const{setTheme}=themes
 
     
 
@@ -36,6 +39,8 @@ export default function Header({  }) {
 
     const handleButtonClick = () => {
       console.log("CLICK!");
+      setTheme('light')
+      localStorage.removeItem('theme')
     }
 
     return (
