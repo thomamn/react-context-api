@@ -7,6 +7,7 @@ import user from './assets/data/user.js'
 import { createContext } from 'react'
 
 const NoContext=createContext()
+const ConTheme=createContext()
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
@@ -20,14 +21,18 @@ function App() {
 
     return (
         <div className="container">
+            
             <NoContext.Provider value={{tweets, setTweets, user}}>
-                <Header theme={theme} setTheme={setTheme} />
-                <Tweets tweets={tweets} theme={theme}  />
-                <RightSide theme={theme} />
+                <ConTheme.Provider value={{theme, setTheme}}>
+                    <Header />
+                    <Tweets  />
+                    <RightSide />
+                </ConTheme.Provider>
             </NoContext.Provider>
+            
             
         </div>
     )
 }
 
-export { NoContext, App };
+export { ConTheme, NoContext, App };

@@ -1,10 +1,11 @@
 import { NoContext } from "../App";
 import { useContext } from "react";
+import {ConTheme} from "../App";
 
-export default function Tweet({ tweet, theme }) {
+export default function Tweet({ tweet }) {
 
-    //const context=useContext(NoContext)
-    //const{theme}=context.theme
+    const themes=useContext(ConTheme)
+    const{theme}=themes
     
     return (
         <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>
