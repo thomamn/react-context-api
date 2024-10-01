@@ -4,6 +4,14 @@ import { ConTheme } from "../App";
 
 export default function Header({  }) {
 
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          setTheme(savedTheme);
+        }
+      }, []
+    );
+
     const context=useContext(NoContext)
     const themes=useContext(ConTheme)
 
@@ -11,13 +19,17 @@ export default function Header({  }) {
     const{theme}=themes
     const{setTheme}=themes
 
+    
+
+    
+
     const handleCheckChange = () => {
       if(theme === 'dark') {
         setTheme('light');
-        localStorage.setItem(theme, 'light')
+        localStorage.setItem('theme', 'light')
       } else {
         setTheme('dark');
-        localStorage.setItem(theme, 'dark')
+        localStorage.setItem('theme', 'dark')
       }
       
     }
